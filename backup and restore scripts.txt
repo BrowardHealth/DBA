@@ -1,0 +1,25 @@
+Examples:
+
+RESTORE DATABASE [BHActivityCode]
+FROM DISK = '\\dbadev0116vm\open\backup\BHActivityCode.fbk'with   STATS, NORECOVERY,
+MOVE 'ActivityCode' TO 'D:\MSSQL\ActivityCode.mdf',
+MOVE 'ActivityCode_log' TO 'L:\MSSQL\ActivityCode_log.ldf'
+
+RESTORE DATABASE RightFax
+FROM DISK = '\\dbadev0116vm\open\backup\RightFax.fbk'with   STATS, NORECOVERY,
+MOVE 'RightFax' TO 'D:\MSSQL\RightFax.mdf',
+MOVE 'RightFax_log' TO 'L:\MSSQL\RightFax_log.ldf'
+
+BACKUP DATABASE [BHActivityCode]
+TO DISK = '\\dbadev0116vm\open\backup\BHActivityCode.fbk'
+with compression, STATS
+exec sp_helpdb RightFax
+
+BACKUP DATABASE RightFax
+TO DISK = '\\dbadev0116vm\open\backup\RightFax.fbk'
+with compression, STATS
+
+BACKUP LOG RightFax
+TO DISK = '\\dbadev0116vm\open\backup\RightFax.lbk'
+with compression, STATS
+

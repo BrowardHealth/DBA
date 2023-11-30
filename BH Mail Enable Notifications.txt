@@ -1,0 +1,12 @@
+When Warning in SQL Server Agent [475] Database Mail is not enabled for agent notifications.
+
+FIX:
+Database Using SQL Server Management Studio
+To configure SQL Server Agent to use Database Mail
+In Object Explorer, expand a SQL Server instance.
+Right-click SQL Server Agent, and then click Properties.
+Click Alert System.
+Select Enable Mail Profile.
+In the Mail system list, select Database Mail.
+In the Mail profile list, select a mail profile for Database Mail.
+Restart SQL Server Agent .
