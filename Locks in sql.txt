@@ -1,0 +1,3 @@
+
+Activity monitor, find suspended, locked
+find the user with sp_who2, and compare the id's, to kill the session holding the lock

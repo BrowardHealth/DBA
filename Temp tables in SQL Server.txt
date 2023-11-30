@@ -1,0 +1,12 @@
+To get distinct charges, you can build a temporary table using the following,
+and then query the temp table:
+
+SELECT DISTINCT
+      [ACCT_NUM],[ACCT_TYPE],[ACCT_SUBTYPE],[ACCT_SUBTYPE2]
+      ,[CLM_SRC_CD],[PD_DT],[SVC_DT],[END_DT],[CHRG_AMT],[CLAIM_ID]
+   INTO #TEMPXX
+  FROM [BITeam_Test].[dbo].[Cigna201801-201811]
+
+Then
+  SELECT SUM(CHRG_AMT)
+    FROM #TEMPXX where svc_dt like '2018-01%' 

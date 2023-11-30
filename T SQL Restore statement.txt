@@ -1,0 +1,25 @@
+
+Below, enables the SQL Server Agent extended stored procedures
+https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/agent-xps-server-configuration-option
+
+sp_configure 'show advanced options', 1;  
+GO  
+RECONFIGURE;  
+GO  
+sp_configure 'Agent XPs', 1;  
+
+
+** The restore cmd below, fixed msdb 10/20/17. Ran for globaldata, webcache, and webdata as well. 
+stop SQL agent if running, then perform below:   N = name of backup file
+
+use master
+go 
+restore database [msdb]
+from disk = N'J:\MSSQL\msdb_backup_2017_10_19_180001_4260189.bak'
+with replace              (**can also use "with recovery"  here)
+go
+
+output msg similar to below for each:
+Processed 1959080 pages for database 'WebData', file 'WebData' on file 1.
+Processed 1 pages for database 'WebData', file 'WebDatalog' on file 1.
+RESTORE DATABASE successfully processed 1959081 pages in 38.038 seconds (402.369 MB/sec).

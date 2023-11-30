@@ -1,0 +1,11 @@
+SELECT 
+session_id, start_time, command, database_id, user_id, percent_complete
+FROM sys.dm_exec_requests
+ WHERE command = 'BACKUP DATABASE'
+--where command like 'RESTORE%'
+--where session_id=51 or command like 'restore%'
+
+SELECT 
+session_id, start_time, command, database_id, user_id, percent_complete
+FROM sys.dm_exec_requests 
+where convert(varchar, start_time,120) LIKE '2017-03-30 14:0%' order by start_time    (job was started 3/30/17 between 14:00 and 14:10 pm)

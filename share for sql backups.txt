@@ -1,0 +1,2 @@
+If problem with b: drive, or just want to switch over
+can use \\bhit2smb\sqlbackups

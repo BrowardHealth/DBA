@@ -1,0 +1,4 @@
+Command below might fix from an elevated command prompt. Need to add server name and user name.
+
+
+setspn -A MSSQLSvc/LTIPASQL116VM.nbhdhqdomain.nbhd.org:1433 nbhdhqdomain\svcempsqlserver

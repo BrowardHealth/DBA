@@ -1,0 +1,9 @@
+POWERSHELL CMDS ON SQL AO CLUSTER
+
+fltmc instances
+
+get-cluster
+
+get-clusternetwork
+
+get-clusterresource

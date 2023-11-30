@@ -1,0 +1,9 @@
+From pdsqltst5116vm, msdb db
+
+SELECT TOP (1000) [server_id]
+      ,[server_group_id]
+      ,[name]
+      ,[server_name]
+      ,[description]
+      ,[server_type]
+  FROM [msdb].[dbo].[sysmanagement_shared_registered_servers_internal] order by name;

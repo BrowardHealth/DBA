@@ -1,0 +1,35 @@
+-- Excel Connection Manager select New and use the new one created called Excel Connection Manager 2
+   Excel_Destination, new = Excel_Destination10, 
+   Name of the Excel sheet, select Excel_Destination10$
+   Select mappings and map Copy of on left to "Copy of" fields on right (use 1st letter to speed up)
+
+   55 + 49 104
+
+exec sp_MSforeachdb ' Use [?]
+select name from sysobjects  where  name like ''%%'' and type = ''U''  '
+
+--To rename objects
+--exec sp_rename '', ''
+
+IT : Internal Table
+L : Log
+P : Stored Procedure
+PC : Assembly (CLR) Stored Procedure
+PK : PRIMARY KEY Constraint (Type is K)
+RF : Replication Filter Stored Procedure
+S : System Table
+SN : Synonym
+SQ : Service Queue
+TA : Assembly (CLR) DML Trigger
+TF : Table Function
+TR : SQL DML Trigger
+TT : Table Type
+U : User Table
+UQ : UNIQUE Constraint
+V : View
+
+
+For listing of databases:
+declare @cmd varchar(500)  
+set @cmd='USE ? PRINT DB_NAME()'  
+EXECUTE sp_msforeachdb @cmd 

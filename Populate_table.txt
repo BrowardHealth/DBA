@@ -1,0 +1,19 @@
+SET IDENTITY_INSERT gamatest.dbo.Table_11 ON
+DECLARE @i INT;
+SELECT @i = 1;
+SET NOCOUNT ON
+WHILE @i <= 25
+BEGIN
+    INSERT INTO dbo.Table_11(ID,Code,Description,DateUpdated)
+	VALUES (@i,'Code 1','Table_11 Description','10/11/2016'); 
+	SELECT @i = @i + 1;
+END
+SET NOCOUNT OFF
+SET IDENTITY_INSERT gamatest.dbo.Table_11 OFF;
+
+-- Add a primary key/clustered index to the dbo.Table_11 table
+-- ALTER TABLE dbo.Table_11 ADD CONSTRAINT PK_Table_11 PRIMARY KEY CLUSTERED (Number)
+--
+CREATE INDEX table_11_idx1 ON dbo.Table_11 (ID);  
+
+SELECT COUNT(*) FROM dbo.Table_11

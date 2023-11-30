@@ -1,0 +1,7 @@
+-- Jobs should all have unique schedule id else might run at undesired times
+-- To fix duplicates, go to dup job and create new schedule for it, and delete the old,
+-- then rerun this script. Should now be unique.  031623
+--
+select s.*, j.name from msdb..sysjobschedules s
+join msdb..sysjobs j on j.job_id = s.job_id
+order by schedule_id, job_id
