@@ -1,0 +1,19 @@
+-- Use if SSMS Availability Group Creation Wizard fails to create the endpoint. 
+DROP ENDPOINT [Hadr_endpoint]
+ 
+GO
+/****** Object:  Endpoint [Hadr_endpoint]    Script Date: 2/28/2023 4:09:47 PM ******/
+ 
+CREATE ENDPOINT [Hadr_endpoint]
+ 
+	STATE=STARTED
+ 
+	AS TCP (LISTENER_PORT = 5019, LISTENER_IP = ALL)
+ 
+	FOR DATA_MIRRORING (ROLE = ALL, AUTHENTICATION = WINDOWS NEGOTIATE
+ 
+, ENCRYPTION = REQUIRED ALGORITHM AES)
+ 
+GO
+
+GRANT CONNECT ON endpoint::hadr_endpoint TO [NBHDHQDOMAIN\svcsqlserverpyxis]
