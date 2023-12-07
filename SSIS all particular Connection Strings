@@ -1,0 +1,32 @@
+IF exists (select 1 from sysdatabases where name like '%SSISDB%')
+begin
+ 
+ 
+declare @dbname varchar (25)
+select @dbname =  name from sysdatabases where name like 'SSISDB%'
+and name not like '%tempdb'
+select @dbname
+declare @cmd varchar(8000) = ''
+select @cmd = @cmd + 
+'select  
+     prj.name                    as ''ProjectName''
+    ,pa.name                     as ''SSISPackageName''
+    ,op.parameter_name           as ''ParmaterName''
+    ,op.design_default_value     as ''ConnectionString''
+from '    + @dbname + '.internal.object_parameters   op
+join ' + @dbname + '.internal.projects            prj
+  on op.project_id               = prj.project_id
+join '  + @dbname + '.internal.[packages]        pa 
+  on pa.project_id               = prj.project_id
+where op.parameter_name          like ''%ConnectionString%''
+and convert(varchar(max),op.design_default_value) like ''%BISQL0112%''
+ 
+'
+ 
+--select @cmd
+ 
+  exec (@cmd )
+ 
+  end
+
+ -- select         prj.name                    as 'ProjectName'      ,pa.name                     as 'SSISPackageName'      ,op.parameter_name           as 'ParmaterName'      ,op.design_default_value     as 'ConnectionString'  from           ssisdb.internal.object_parameters   op  join ssisdb.internal.projects            prj    on op.project_id               = prj.project_id  join ssisdb.internal.[packages]        pa     on pa.project_id               = prj.project_id  where op.parameter_name          like '%ConnectionString%'  and convert(varchar(max),op.design_default_value) like '%BISQL0112%'   
